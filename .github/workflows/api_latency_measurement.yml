@@ -2,7 +2,7 @@ name: API Latency Measurement
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '0 */72 * * *'
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
