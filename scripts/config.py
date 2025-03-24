@@ -17,47 +17,29 @@ ENDPOINTS = {
     'okx': {
         'market_data': {
             'url': 'https://www.okx.com/api/v5/market/ticker?instId=BTC-USDT',
-            'method': 'GET',
-            'headers': {
-                'Accept': 'application/json'
-            }
+            'method': 'GET'
         },
         'book': {
             'url': 'https://www.okx.com/api/v5/market/books?instId=BTC-USDT&sz=10',
-            'method': 'GET',
-            'headers': {
-                'Accept': 'application/json'
-            }
+            'method': 'GET'
         },
         'trades': {
             'url': 'https://www.okx.com/api/v5/market/trades?instId=BTC-USDT',
-            'method': 'GET',
-            'headers': {
-                'Accept': 'application/json'
-            }
+            'method': 'GET'
         }
     },
     'bitget': {
         'market_data': {
             'url': 'https://api.bitget.com/api/mix/v1/market/ticker?symbol=BTCUSDT_UMCBL',
-            'method': 'GET',
-            'headers': {
-                'Accept': 'application/json'
-            }
+            'method': 'GET'
         },
         'book': {
             'url': 'https://api.bitget.com/api/mix/v1/market/depth?symbol=BTCUSDT_UMCBL&limit=20',
-            'method': 'GET',
-            'headers': {
-                'Accept': 'application/json'
-            }
+            'method': 'GET'
         },
         'trades': {
             'url': 'https://api.bitget.com/api/mix/v1/market/trades?symbol=BTCUSDT_UMCBL&limit=20',
-            'method': 'GET',
-            'headers': {
-                'Accept': 'application/json'
-            }
+            'method': 'GET'
         }
     }
 }
