@@ -7,7 +7,7 @@ name = "api-benchmarks"
 version = "0.1.0"
 description = "API Latency Benchmark Suite for Cryptocurrency Exchanges"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.9"
 license = "MIT"
 dependencies = [
     "requests>=2.28.0",
@@ -22,11 +22,11 @@ dependencies = [
 run-benchmarks = "run_benchmarks:main"
 
 [tool.setuptools]
-packages = ["monitor"]
+packages = ["scripts"]
 py-modules = ["run_benchmarks"]
 
 [tool.pytest.ini_options]
-testpaths = ["monitor"]
+testpaths = ["scripts"]
 python_files = "*_latency.py"
 addopts = "--benchmark-columns=min,mean,max,stddev"
 

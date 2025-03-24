@@ -9,11 +9,19 @@ import os
 import sys
 from datetime import datetime
 
-from scripts import (
-    run_okx_benchmarks,
-    run_bitget_benchmarks,
-    generate_comprehensive_report
-)
+try:
+    # 尝试从已安装的包导入
+    from scripts import (
+        run_okx_benchmarks,
+        run_bitget_benchmarks,
+        generate_comprehensive_report
+    )
+except ImportError:
+    # 如果上述导入失败，尝试从本地目录导入
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from scripts.okx_latency import run_all_benchmarks as run_okx_benchmarks
+    from scripts.bitget_latency import run_all_benchmarks as run_bitget_benchmarks
+    from scripts.benchmark_core import generate_comprehensive_report
 
 def create_output_dir(output_dir="benchmark_results"):
     """Create output directory if it doesn't exist"""
@@ -54,7 +62,11 @@ def main():
     EXCHANGES = ["okx", "bitget"]
 
     args = sys.argv[1:]
-    exchange = args[0]
+    exchange = "all"  # 默认为 all
+    
+    # 只有在提供了参数时才尝试获取第一个参数
+    if args:
+        exchange = args[0]
         
     if exchange not in (EXCHANGES + ["all"]):
         exchange = "all"

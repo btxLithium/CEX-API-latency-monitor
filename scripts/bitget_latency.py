@@ -68,7 +68,11 @@ def test_bitget_trades_benchmark(benchmark):
 
 # Helper function for manual testing
 def run_all_benchmarks():
-    """Run all Bitget benchmarks"""
+    """
+    Run all Bitget benchmarks
+    
+    This function is exported and used by the main run_benchmarks.py script
+    """
     print("\n=== Running Bitget API Benchmarks ===")
     pytest.main(["-xvs", __file__, "--benchmark-save=bitget"])
     

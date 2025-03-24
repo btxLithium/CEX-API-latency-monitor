@@ -193,24 +193,8 @@ def generate_comprehensive_report(output_dir=None):
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     report_file = os.path.join(output_dir, f"comprehensive_report_{timestamp}.html")
     
-    # Copy CSS file to output directory for relative path reference
-    css_src = os.path.join(os.getcwd(), 'assets', 'css', 'report.css')
-    css_dest_dir = os.path.join(output_dir, 'assets', 'css')
-    os.makedirs(css_dest_dir, exist_ok=True)
-    css_dest = os.path.join(css_dest_dir, 'report.css')
-    
-    # Copy font file to output directory
-    font_src = os.path.join(os.getcwd(), 'assets', 'IBMPlexMono-Medium.ttf')
-    font_dest_dir = os.path.join(output_dir, 'assets')
-    os.makedirs(font_dest_dir, exist_ok=True)
-    font_dest = os.path.join(font_dest_dir, 'IBMPlexMono-Medium.ttf')
-    
-    try:
-        import shutil
-        shutil.copy(css_src, css_dest)
-        shutil.copy(font_src, font_dest)
-    except Exception as e:
-        print(f"Warning: Could not copy style files: {str(e)}")
+    css_path = "assets/css/report.css"
+    font_path = "assets/IBMPlexMono-Medium.ttf"
     
     # Generate HTML report
     with open(report_file, 'w') as f:
@@ -286,5 +270,5 @@ def generate_comprehensive_report(output_dir=None):
 </html>
 """)
     
-    print(f"Comprehensive report generated: {report_file}")
+    print(f"Report generated: {report_file}")
     return True 
