@@ -2,7 +2,7 @@ name: API Latency Report Generation
 
 on:
   schedule:
-    - cron: '0 */5 * * *'
+    - cron: '0 */72 * * *'
   workflow_dispatch:  # 允许手动触发
 
 jobs:
