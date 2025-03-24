@@ -1,7 +1,8 @@
-# 123
+# CEX public API Benchmark
 
-A benchmarking tool designed to measure, analyze and compare publicAPI latency for crypto exchanges using `pytest` framework, supports multiple CEXs (OKX and Bitget by default, configurable in `scripts/config.py`).
+A benchmarking tool designed to measure, analyze and compare public API latency for crypto exchanges using `pytest` framework, supports multiple CEXs (OKX and Bitget by default, configurable in `scripts/config.py`).
 
+一个基于`pytest`框架开发的性能测试工具，专门用于测试和对比加密货币交易所的public API的延迟。目前默认支持 OKX 和 Bitget（可以通过 `scripts/config.py` 文件进行配置和扩展）。
 
 ## Usage
 ### Run benchmarks automatically
