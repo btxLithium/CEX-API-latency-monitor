@@ -9,6 +9,37 @@ from .config import API_ENDPOINTS
 from .okx_latency import test_okx_latency, test_okx_book_latency, test_okx_trades_latency
 from .bitget_latency import test_bitget_latency, test_bitget_book_latency, test_bitget_trades_latency
 
+def run_api_test(exchange, endpoint_type, test_function):
+    """
+    Run a specific API test and format the results
+    
+    Args:
+        exchange (str): Exchange identifier (e.g., 'okx', 'bitget')
+        endpoint_type (str): Type of endpoint being tested (e.g., 'market_data', 'book', 'trades')
+        test_function (function): The test function to call
+    
+    Returns:
+        dict: Test results
+    """
+    exchange_name = exchange.upper()
+    print(f"Testing {exchange_name} {endpoint_type} API latency...")
+    
+    success, result = test_function()
+    
+    # Store results
+    test_result = {
+        'success': success,
+        'result': result
+    }
+    
+    # Format output
+    if success:
+        print(f"✓ {exchange_name} {endpoint_type} API latency: {result:.2f} ms")
+    else:
+        print(f"✗ {exchange_name} {endpoint_type} API test failed: {result}")
+        
+    return test_result
+
 def run_exchange_tests(exchange):
     """
     Run all latency tests for a specific exchange
@@ -25,61 +56,14 @@ def run_exchange_tests(exchange):
     print(f"\n=== Running {exchange_name} latency tests ===")
     
     # Market data test
-    print(f"Testing {exchange_name} market data API latency...")
     if exchange == 'okx':
-        success, result = test_okx_latency()
+        results['market_data'] = run_api_test(exchange, 'market data', test_okx_latency)
+        results['book'] = run_api_test(exchange, 'orderbook', test_okx_book_latency)
+        results['trades'] = run_api_test(exchange, 'trades', test_okx_trades_latency)
     elif exchange == 'bitget':
-        success, result = test_bitget_latency()
-    else:
-        success, result = False, f"Exchange {exchange} not supported"
-    
-    results['market_data'] = {
-        'success': success,
-        'result': result
-    }
-    
-    if success:
-        print(f"✓ {exchange_name} market data API latency: {result:.2f} ms")
-    else:
-        print(f"✗ {exchange_name} market data API test failed: {result}")
-    
-    # Orderbook test
-    print(f"Testing {exchange_name} orderbook API latency...")
-    if exchange == 'okx':
-        success, result = test_okx_book_latency()
-    elif exchange == 'bitget':
-        success, result = test_bitget_book_latency()
-    else:
-        success, result = False, f"Exchange {exchange} not supported"
-    
-    results['book'] = {
-        'success': success,
-        'result': result
-    }
-    
-    if success:
-        print(f"✓ {exchange_name} orderbook API latency: {result:.2f} ms")
-    else:
-        print(f"✗ {exchange_name} orderbook API test failed: {result}")
-    
-    # Trades test
-    print(f"Testing {exchange_name} trades API latency...")
-    if exchange == 'okx':
-        success, result = test_okx_trades_latency()
-    elif exchange == 'bitget':
-        success, result = test_bitget_trades_latency()
-    else:
-        success, result = False, f"Exchange {exchange} not supported"
-    
-    results['trades'] = {
-        'success': success,
-        'result': result
-    }
-    
-    if success:
-        print(f"✓ {exchange_name} trades API latency: {result:.2f} ms")
-    else:
-        print(f"✗ {exchange_name} trades API test failed: {result}")
+        results['market_data'] = run_api_test(exchange, 'market data', test_bitget_latency)
+        results['book'] = run_api_test(exchange, 'orderbook', test_bitget_book_latency)
+        results['trades'] = run_api_test(exchange, 'trades', test_bitget_trades_latency)
     
     return results
 
