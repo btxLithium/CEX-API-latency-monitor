@@ -17,7 +17,8 @@ from .config import (
 from .benchmark_core import (
     make_api_request,
     benchmark_api_request,
-    save_benchmark_results
+    save_benchmark_results,
+    generate_comprehensive_report
 )
 
 # Export exchange-specific modules
@@ -34,6 +35,7 @@ __all__ = [
     'make_api_request',
     'benchmark_api_request',
     'save_benchmark_results',
+    'generate_comprehensive_report',
     'test_okx_market_data_benchmark',
     'test_okx_book_benchmark',
     'test_okx_trades_benchmark',

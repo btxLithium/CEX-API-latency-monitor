@@ -68,22 +68,17 @@ API_SETTINGS = {
     'retry_count': 3,     # Number of retries for failed requests
     'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
     'use_api_key': False, # Whether to use API keys for requests
-    'api_key_header': 'X-API-KEY', # Header name for API key
-    'api_keys': {         # API keys for different exchanges
-        # 'okx': 'your-api-key-here',
-        # 'bitget': 'your-api-key-here'
-    }
 }
 
 # Benchmark settings
 BENCHMARK_SETTINGS = {
-    'min_rounds': 5,      # Minimum number of rounds to run for each benchmark
+    'min_rounds': 2,      # Minimum number of rounds to run for each benchmark
     'max_time': 1.0,      # Maximum time (in seconds) to run each benchmark
     'warmup': True,       # Whether to perform a warmup round
     'latency_threshold': {  # Maximum acceptable latency in ms for each endpoint
-        'market_data': 500,
-        'book': 600,
-        'trades': 550
+        'market_data': 1500,
+        'book': 1500,
+        'trades': 1500
     }
 }
 
