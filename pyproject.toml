@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "crypto-exchange-api-latency"
+version = "0.1.0"
+description = "A bot for measuring, logging, and visualizing the API latency of various cryptocurrency exchanges"
+authors = ["John Sui <jhsui@icloud.com>"]
+readme = "README.md"
+license = "MIT"
+packages = [{ include = "monitor" }]
+
+[tool.poetry.dependencies]
+python = "^3.12.2"
+matplotlib = "^3.10.1"
+numpy = "^2.2.4"
+pytest = "^8.3.4"
+requests = "^2.25.0"
+
+[tool.poetry.scripts]
+run-tests = "main:main"
+
+[tool.pytest.ini_options]
+testpaths = ["monitor"]
+python_files = "*_latency.py"
