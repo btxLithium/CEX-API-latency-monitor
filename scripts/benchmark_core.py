@@ -98,7 +98,7 @@ def save_benchmark_results(results, exchange, output_dir=None):
         bool: Success status
     """
     if not output_dir:
-        output_dir = DATA_STORAGE.get('output_dir', 'benchmark_results')
+        output_dir = DATA_STORAGE.get('output_dir', 'docs')
     
     # Create output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
@@ -139,7 +139,7 @@ def generate_comprehensive_report(output_dir=None):
         bool: Success status
     """
     if not output_dir:
-        output_dir = DATA_STORAGE.get('output_dir', 'benchmark_results')
+        output_dir = DATA_STORAGE.get('output_dir', 'docs')
     
     # Create output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
@@ -189,9 +189,8 @@ def generate_comprehensive_report(output_dir=None):
                 except Exception as e:
                     print(f"Error processing {file}: {str(e)}")
     
-    # Create a comprehensive report
-    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    report_file = os.path.join(output_dir, f"comprehensive_report_{timestamp}.html")
+    # Create a comprehensive report with fixed filename
+    report_file = os.path.join(output_dir, "benchmark_report_latest.html")
     
     css_path = "assets/css/report.css"
     font_path = "assets/IBMPlexMono-Medium.ttf"

@@ -67,7 +67,7 @@ BENCHMARK_SETTINGS = {
 # Data storage settings
 DATA_STORAGE = {
     'max_entries': 1000,  # Maximum number of data points to keep per exchange
-    'output_dir': 'benchmark_results',  # Directory to store benchmark data
+    'output_dir': 'docs',  # Directory to store benchmark data
     'chart_width': 12,    # Width of charts in inches
     'chart_height': 7,    # Height of charts in inches
     'dpi': 300           # DPI for saved charts

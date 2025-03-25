@@ -23,7 +23,7 @@ except ImportError:
     from scripts.bitget_latency import run_all_benchmarks as run_bitget_benchmarks
     from scripts.benchmark_core import generate_comprehensive_report
 
-def create_output_dir(output_dir="benchmark_results"):
+def create_output_dir(output_dir="docs"):
     """Create output directory if it doesn't exist"""
     os.makedirs(output_dir, exist_ok=True)
     print(f"Benchmark results will be saved to: {os.path.abspath(output_dir)}")
@@ -51,14 +51,13 @@ def run_benchmarks(exchange="all", output_dir="benchmark_results"):
         elif exchange == "bitget":
             run_bitget_benchmarks()
 
-    # 生成综合报告
     generate_comprehensive_report(output_dir)
     
     print(f"\nBenchmark results saved to {output_dir}/")
 
 def main():
     """Main function"""
-    output_dir = "benchmark_results"
+    output_dir = "docs"
     EXCHANGES = ["okx", "bitget"]
 
     args = sys.argv[1:]
