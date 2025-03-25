@@ -7,10 +7,17 @@
 
 body {
     font-family: 'IBM Plex Mono', monospace;
-    margin: 20px;
+    margin: 0;
+    padding: 0;
     line-height: 1.5;
     color: #ffffff;
     background-color: #1a1a1a;
+}
+
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 h1 {
@@ -31,9 +38,13 @@ h2 {
 table {
     border-collapse: collapse;
     width: 100%;
+    max-width: 950px;
     margin-top: 20px;
     margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    table-layout: fixed;
 }
 
 th,
@@ -41,12 +52,35 @@ td {
     border: 1px solid #333;
     padding: 12px;
     text-align: left;
+    word-wrap: break-word;
 }
 
 th {
     background-color: #222;
     color: #3498db;
     font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+
+/* 普通表格列宽设置 */
+th:first-child,
+td:first-child {
+    width: 40%;
+}
+
+th:not(:first-child),
+td:not(:first-child) {
+    width: 20%;
+    text-align: center;
+}
+
+/* 摘要表格列宽平均设置 */
+.summary table th,
+.summary table td {
+    width: 25% !important;
+    /* 使用!important确保覆盖之前的设置 */
+    text-align: center;
 }
 
 tr:nth-child(even) {
@@ -71,16 +105,33 @@ tr:hover {
 
 .timestamp {
     color: #999;
-    font-style: italic;
     margin-bottom: 20px;
 }
 
 .best-value {
     color: #27ae60;
     font-weight: bold;
+    font-size: 13px;
 }
 
 .worst-value {
     color: #e74c3c;
     font-weight: bold;
+    font-size: 13px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
 }

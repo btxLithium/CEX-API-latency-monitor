@@ -205,11 +205,45 @@ def generate_comprehensive_report(output_dir=None):
     <meta charset="UTF-8">
 </head>
 <body>
+    <div class="container">
     <h1>API Latency Benchmark Report</h1>
     <p class="timestamp">Generated on: """ + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + """</p>
 """)
         
-        # Add summary for each exchange
+        # Add summary of all exchanges first
+        f.write("""
+    <div class="summary">
+        <h2>SUMMARY</h2>
+        <table>
+            <tr>
+                <th>Exchange</th>
+                <th>Average Latency (ms)</th>
+                <th>Best Endpoint</th>
+                <th>Worst Endpoint</th>
+            </tr>
+""")
+        
+        for exchange, results in exchange_results.items():
+            if results:
+                avg_latency = sum(r['mean'] for r in results) / len(results)
+                best = min(results, key=lambda x: x['mean'])
+                worst = max(results, key=lambda x: x['mean'])
+                
+                f.write(f"""
+            <tr>
+                <td>{exchange.upper()}</td>
+                <td>{avg_latency:.2f}</td>
+                <td><span class="best-value">{best['endpoint']}<br> ({best['mean']:.2f} ms)</span></td>
+                <td><span class="worst-value">{worst['endpoint']}<br> ({worst['mean']:.2f} ms)</span></td>
+            </tr>
+""")
+        
+        f.write("""
+        </table>
+    </div>
+""")
+        
+        # Add detailed results for each exchange
         for exchange, results in exchange_results.items():
             f.write(f"""
     <h2>{exchange.upper()} Exchange</h2>
@@ -234,36 +268,7 @@ def generate_comprehensive_report(output_dir=None):
             
             f.write("    </table>\n")
         
-        # Add summary of all exchanges
         f.write("""
-    <div class="summary">
-        <h2>Comparison Summary</h2>
-        <table>
-            <tr>
-                <th>Exchange</th>
-                <th>Average Latency (ms)</th>
-                <th>Best Endpoint</th>
-                <th>Worst Endpoint</th>
-            </tr>
-""")
-        
-        for exchange, results in exchange_results.items():
-            if results:
-                avg_latency = sum(r['mean'] for r in results) / len(results)
-                best = min(results, key=lambda x: x['mean'])
-                worst = max(results, key=lambda x: x['mean'])
-                
-                f.write(f"""
-            <tr>
-                <td>{exchange.upper()}</td>
-                <td>{avg_latency:.2f}</td>
-                <td><span class="best-value">{best['endpoint']} ({best['mean']:.2f} ms)</span></td>
-                <td><span class="worst-value">{worst['endpoint']} ({worst['mean']:.2f} ms)</span></td>
-            </tr>
-""")
-        
-        f.write("""
-        </table>
     </div>
 </body>
 </html>

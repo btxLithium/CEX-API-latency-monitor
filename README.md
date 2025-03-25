@@ -1,5 +1,7 @@
 # CEX public API Benchmark
 
+Latest generated report of OKX and Bitget public API latency: [https://btxlithium.github.io/CEX-public-API-benchmark/benchmark_report_latest.html](https://btxlithium.github.io/CEX-public-API-benchmark/benchmark_report_latest.html)
+
 A benchmarking tool designed to measure, analyze and compare public API latency for crypto exchanges using `pytest` framework, supports multiple CEXs (OKX and Bitget by default, configurable in `scripts/config.py`).
 
 一个基于`pytest`框架开发的性能测试工具，专门用于测试和对比加密货币交易所的public API的延迟。目前默认支持 OKX 和 Bitget（可以通过 `scripts/config.py` 文件进行配置和扩展）。
@@ -33,9 +35,6 @@ Example configuration:
     'book': {
         'url': 'https://api.bitget.com/api/mix/v1/market/depth?symbol=BTCUSDT_UMCBL&limit=20',
         'method': 'GET',
-        'headers': {
-            'Accept': 'application/json'
-        }
     }
 }
 ```
