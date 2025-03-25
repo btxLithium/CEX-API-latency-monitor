@@ -1,6 +1,6 @@
 # CEX public API Benchmark
 
-*Latest generated report of OKX and Bitget public API latency: [https://btxlithium.github.io/CEX-public-API-benchmark/benchmark_report_latest.html](https://btxlithium.github.io/CEX-public-API-benchmark/benchmark_report_latest.html)*
+**Latest generated report of OKX and Bitget public API latency: [https://btxlithium.github.io/CEX-public-API-benchmark/benchmark_report_latest.html](https://btxlithium.github.io/CEX-public-API-benchmark/benchmark_report_latest.html)**
 
 A benchmarking tool designed to measure, analyze and compare public API latency for crypto exchanges using `pytest` framework, supports multiple CEXs (OKX and Bitget by default, configurable in `scripts/config.py`).
 
