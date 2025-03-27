@@ -1,4 +1,4 @@
-# CEX public API Benchmark
+# CEX public API Benchmark(work in progress🚧)
 
 **Latest generated report of OKX and Bitget public API latency: [https://btxlithium.github.io/CEX-public-API-benchmark/benchmark_report_latest.html](https://btxlithium.github.io/CEX-public-API-benchmark/benchmark_report_latest.html)**
 
